@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    .timer {
+      background-color: #4e095f;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      color: #fff;
+    }
+
+    #countup {
+      font-size: 24px;
+      margin: 20px 0;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 18px;
+      background-color: #fff;
+      color: #510953;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+  <title>Countup Timer</title>
+</head>
+<body>
+  <div class="timer">
+    <h1>Countup Timer</h1>
+    <p id="countup">0:0:0</p>
+    <button onclick="startTimer()">Start</button>
+    <button onclick="stopTimer()">Stop</button>
+  </div>
+  
+  <script>
+let seconds=0;
+let minutes=0;
+let hours=0;
+let timer ;
+function updateCountup() {
+
+  seconds+=1;
+   if(seconds>59)
+  {
+     seconds =0;
+     minutes +=1;
+     if(minutes>59)
+  {
+     seconds =0;
+     minutes =0;
+     hours +=1;
+        if(hours>23)
+  {
+     seconds =0;
+     minutes =0;
+     hours =0;
+  }
+  }
+
+
+  }  
+             const countupElement = document.getElementById('countup');
+           countupElement.innerText = `${hours}:${minutes}:${seconds}`;
+}
+   function startTimer() {
+    timer = setInterval(updateCountup, 1000);
+    
+    }
+
+    function stopTimer() {
+      clearInterval(timer);
+    }
+
+
+  </script>
+</body>
+</html>
+
